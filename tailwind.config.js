@@ -26,7 +26,7 @@ module.exports = {
 
 // ANIMATED ANCHOR
 /*
-<a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+<a class="relative inline-block pr-5 text-sm md:text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
   href="#">
   <span
     class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">

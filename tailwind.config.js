@@ -16,6 +16,7 @@ module.exports = {
 // Gray-900 #111827
 // Gray-400 #9ca3af
 // Gray-300 #d1d5db
+// Gray-50 #f9fafb
 // PURPLE BTN OUTLINE #6d4aff
 
 // CONTAINER

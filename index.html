@@ -10,23 +10,36 @@
   <title>Proton | Mail</title>
 </head>
 
-<body>
+<body class="bg-[#f7f5ff]">
   <!-- MAIN CONTAINER -->
   <main class="h-full">
     <!-- HEADER SECTION START -->
     <header class="fixed top-0 z-30 w-full border-b-2 bg-[#f7f5ff]" x-data="{
-      headerScroll: false
+      headerScroll: false,
+      oldValue: 0,
+      newValue: 0,
     }" :class="headerScroll ? 'border-purple-100' : 'border-transparent'">
+      <!-- PRIMARY HEADER -->
       <div
-        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] flex items-center gap-5 xl:gap-8 transition-all ease-linear duration-150"
-        @scroll.window="
-          headerScroll = window.pageYOffset > 10 ? true : false
+        class="container max-w-[120rem] h-16 xl:h-24 px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] flex items-center gap-5 xl:gap-8 transition-all ease-linear duration-150 border-b-2 border-[#e2dbff]"
+        :class="{'-mt-16 xl:-mt-24': headerScroll}" @scroll.window="
+         newValue = window.pageYOffset;
+          if (oldValue > newValue) {
+            headerScroll = false;
+          }else{
+            headerScroll = true;
+          }
+          oldValue = newValue;
         ">
         <!-- LOGO BOX -->
-        <div class="flex flex-grow flex-shrink-0 h-2/5 xl:flex-grow-0 xl:h-6 xl:-mt-2">
+        <div class="flex flex-grow flex-shrink-0 h-2/5 xl:flex-grow-0 xl:h-6 xl:-mt-2 basis-1/3 xl:basis-auto">
           <a class="flex h-full" href="#">
             <!-- LOGO -->
-            <img src="images/download.svg" alt="Proton Logo" class="inline-block w-auto h-auto max-w-full max-h-full">
+            <img src="images/download.svg" alt="Proton Logo"
+              class="md:inline-block w-auto h-auto max-w-full max-h-full hidden">
+            <!-- LOGO SMALL -->
+            <img src="images/proton-logo-2.svg" alt="Proton Logo"
+              class="inline-block w-auto h-auto max-w-full max-h-full md:hidden">
           </a>
         </div>
         <!-- DESKTOP NAVIGATION BOX -->
@@ -277,8 +290,14 @@
             </ul>
           </nav>
         </div>
+        <!-- PROTON MAIL LOGO -->
+        <div class="flex justify-center h-2/5 basis-2/3 xl:hidden xl:basis-auto">
+          <a class="text-center" href="#">
+            <img src="images/proton-main-comp.svg" alt="Mail" class="inline-block w-auto h-auto max-w-full max-h-full">
+          </a>
+        </div>
         <!-- SIGN UP & CREATE ACCOUNT BUTTONS -->
-        <div class="hidden xl:shrink-0 items-center md:flex md:gap-4">
+        <div class="hidden xl:shrink-0 items-center xl:flex md:gap-4">
           <a target="_self" href="#"
             class="transition-all text-[#6d4aff] inline-block rounded-full font-bold text-base py-1.5 px-5 border-2 border-[#6d4aff] text-center hover:bg-[#efebff] hover:border-[#4a2dc5] hover:text-[#4a2dc5]">
             Sign in
@@ -289,7 +308,7 @@
           </a>
         </div>
         <!-- HAMBURGER ICON & MENU -->
-        <div class="xl:hidden justify-self-end">
+        <div class="xl:hidden justify-self-end flex justify-end basis-1/3 xl:basis-auto">
           <div x-data="{
             isSideMenuOpen: false,
             bodyOverflow: function () {
@@ -652,8 +671,62 @@
           </div>
         </div>
       </div>
+      <!-- SECONDARY HEADER -->
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] flex items-center xl:gap-8 -mb-[2px] h-14">
+        <!-- LOGO -->
+        <div class="hidden xl:flex xl:h-6">
+          <a href="#" class="flex h-6">
+            <img src="images/proton-main-comp.svg" alt="Proton mail logo"
+              class="inline-block w-auto h-auto max-w-full max-h-full">
+          </a>
+        </div>
+        <!-- NAVIGATION -->
+        <div
+          class="relative flex flex-grow h-full overflow-y-hidden after:block after:md:hidden after:absolute after:right-0 after:top-0 after:bottom-[2px] after:w-6 after:z-[1] after:bg-gradient-to-l before:block before:md:hidden before:absolute before:left-0 before:top-0 before:w-3 before:z-[1] before:bg-gradient-to-r after:from-[#f7f5ff] before:from-[#f7f5ff]">
+          <ul class="flex flex-grow gap-8 px-3 xl:px-0 h-full overflow-x-auto overflow-y-hidden">
+            <!-- NAVIGATION ITEM -->
+            <li class="relative flex items-center shrink-0 first:ml-auto last:mr-auto xl:first:ml-0 xl:last:mr-0">
+              <a class="outline-none font-semibold hover:text-[#6d4aff] focus:text-[#6d4aff]" href="#">
+                Overview
+              </a>
+            </li>
+            <!-- NAVIGATION ITEM -->
+            <li class="relative flex items-center shrink-0 first:ml-auto last:mr-auto xl:first:ml-0 xl:last:mr-0">
+              <a class="outline-none font-semibold hover:text-[#6d4aff] focus:text-[#6d4aff]" href="#">
+                Security
+              </a>
+            </li>
+            <!-- NAVIGATION ITEM -->
+            <li class="relative flex items-center shrink-0 first:ml-auto last:mr-auto xl:first:ml-0 xl:last:mr-0">
+              <a class="outline-none font-semibold hover:text-[#6d4aff] focus:text-[#6d4aff]" href="#">
+                Bridge
+              </a>
+            </li>
+            <!-- NAVIGATION ITEM -->
+            <li class="relative flex items-center shrink-0 first:ml-auto last:mr-auto xl:first:ml-0 xl:last:mr-0">
+              <a class="outline-none font-semibold hover:text-[#6d4aff] focus:text-[#6d4aff]" href="#">
+                Download
+              </a>
+            </li>
+            <!-- NAVIGATION ITEM -->
+            <li class="relative flex items-center shrink-0 first:ml-auto last:mr-auto xl:first:ml-0 xl:last:mr-0">
+              <a class="outline-none font-semibold hover:text-[#6d4aff] focus:text-[#6d4aff]" href="#">
+                Support
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- CREATE ACCOUNT BTN -->
+        <div class="hidden xl:block" x-show="headerScroll">
+          <a class="transition-all text-white border-2 border-[#6d4aff] bg-[#6d4aff] inline-block rounded-full font-bold text-base py-1.5 px-5 btn-solid-purple text-center hover:bg-[#4a2dc5] hover:border-[#4a2dc5]"
+            href="#">
+            Create a free email account
+          </a>
+        </div>
+      </div>
     </header>
-    <div class="mt-16 xl:mt-24"></div>
+    <div class="mt-32 xl:mt-40"></div>
     <!-- HEADER SECTION END -->
     <!-- HERO SECTION START -->
     <section class="bg-[#f7f5ff]">
@@ -664,12 +737,24 @@
           <!-- HERO HEADING -->
           <h1
             class="lg:max-w-[38rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.5rem] !leading-none text-[#372580]">
-            <span class="font-thin">We advance society by</span> advancing freedom
+            <span class="font-thin">Secure email that</span> protects your privacy
           </h1>
           <!-- HERO DESCRIPTION -->
           <p class="lg:max-w-[37rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-xl text-[#372580]">
-            At Proton, our social mission is at the heart of all we do. We believe in building an internet that works
-            for people and not just for profit.
+            Keep your conversations private. Proton Mail is an encrypted email service based in Switzerland.
+          </p>
+          <!-- HERO CTA -->
+          <div class="flex flex-row flex-wrap items-center justify-center lg:items-start lg:justify-start">
+            <div class="flex flex-col gap-3 sm:flex-row">
+              <a class="transition-all text-white border-2 border-[#6d4aff] bg-[#6d4aff] rounded-full font-bold text-base md:text-lg py-3.5 px-7 text-center hover:bg-[#4a2dc5] hover:border-[#4a2dc5] flex items-center justify-center"
+                href="#">
+                Create a free account
+              </a>
+            </div>
+          </div>
+          <!-- EXTERNAL LINK -->
+          <p class="lg:max-w-md mx-auto lg:mx-0 text-[#372580] mt-8">Need email for work? Discover Proton’s
+            <a href="#" class="text-[#6d4aff] transition-all underline hover:no-underline">secure business email</a>
           </p>
         </div>
         <!-- HERO IMAGE BOX -->

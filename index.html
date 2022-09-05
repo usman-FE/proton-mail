@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./dist/main.css" />
+  <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> -->
+  <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+  <title>Proton | Mail</title>
+</head>
+
+<body>
+  <!-- MAIN CONTAINER -->
+  <main class="h-full">
+    <!-- HEADER SECTION START -->
+    <header class="fixed top-0 z-30 w-full border-b-2 bg-[#f7f5ff]" x-data="{
+      headerScroll: false
+    }" :class="headerScroll ? 'border-purple-100' : 'border-transparent'">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] flex items-center gap-5 xl:gap-8 transition-all ease-linear duration-150"
+        @scroll.window="
+          headerScroll = window.pageYOffset > 10 ? true : false
+        ">
+        <!-- LOGO BOX -->
+        <div class="flex flex-grow flex-shrink-0 h-2/5 xl:flex-grow-0 xl:h-6 xl:-mt-2">
+          <a class="flex h-full" href="#">
+            <!-- LOGO -->
+            <img src="images/download.svg" alt="Proton Logo" class="inline-block w-auto h-auto max-w-full max-h-full">
+          </a>
+        </div>
+        <!-- DESKTOP NAVIGATION BOX -->
+        <div class="hidden xl:block xl:flex-grow xl:mt-1">
+          <!-- DESKTOP NAVIGATION -->
+          <nav>
+            <ul class="flex flex-wrap gap-x-8 gap-y-1">
+              <!-- NAVIGATION ITEM -->
+              <li>
+                <a class="font-semibold hover:text-[#6d4aff] focus-visible:text-[#6d4aff]" href="#">
+                  Security &amp; Privacy
+                </a>
+              </li>
+              <!-- NAVIGATION ITEM -->
+              <li class="relative" x-data="{
+                  isDropdownOpen : false
+                }" @click.away="isDropdownOpen = false">
+                <button
+                  class="inline-flex items-center gap-2 font-semibold hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                  :class="{'text-[#6d4aff]' : isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen" type="button">
+                  <span>Products</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-4 h-4 transition-transform" :class="{'rotate-180' : isDropdownOpen}">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <!-- PRODUCT'S DROPDOWN MENU -->
+                <div
+                  class="overflow-y-auto z-10 mt-3 w-screen transform bg-white shadow-sm ring-1 ring-black ring-opacity-5 absolute max-w-3xl -ml-52 2xl:-ml-8 rounded-lg transition ease-out duration-200 opacity-100 translate-y-0"
+                  x-show="isDropdownOpen" x-transition>
+                  <!-- PRODUCT POINTS -->
+                  <div class="relative -ml-7 px-3 xl:ml-0 xl:px-6 xl:py-6 xl:grid xl:grid-cols-2">
+                    <!-- PROTON MAIL -->
+                    <a class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]" href="#">
+                      <div class="flex-shrink-0 flex items-center justify-center">
+                        <div class="w-14 h-14"><img src="images/proton-mail.svg" alt="Proton mail" class="h-full"></div>
+                      </div>
+                      <div class="ml-4">
+                        <div class="my-4"><img class="w-auto h-5" src="images/proton-mail-desc.svg" alt="Proton Mail">
+                        </div>
+                        <p class="mt-1 text-sm">Encrypted email that's private by default.</p>
+                      </div>
+                    </a>
+                    <!-- PROTON CALENDER -->
+                    <a class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]" href="#">
+                      <div class="flex-shrink-0 flex items-center justify-center">
+                        <div class="w-14 h-14"><img src="images/proton-calender.svg" alt="Proton calendar"
+                            class="h-full"></div>
+                      </div>
+                      <div class="ml-4">
+                        <div class="my-4"><img class="w-auto h-5" src="images/proton-calender-desc.svg"
+                            alt="Proton Calendar"></div>
+                        <p class="mt-1 text-sm">Your calendar is a record of your life. Keep it safe.</p>
+                      </div>
+                    </a>
+                    <!-- PROTION DRIVE -->
+                    <a class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]" href="#">
+                      <div class="flex-shrink-0 flex items-center justify-center">
+                        <div class="w-14 h-14"><img src="images/proton-drive.svg" alt="Proton drive" class="h-full">
+                        </div>
+                      </div>
+                      <div class="ml-4">
+                        <div class="my-4"><img class="w-auto h-5" src="images/proton-drive-desc.svg" alt="Proton Drive">
+                        </div>
+                        <p class="mt-1 text-sm">Secure cloud storage that gives you control of your data.</p>
+                      </div>
+                    </a>
+                    <!-- PROTON VPN -->
+                    <a target="_blank" href="#"
+                      class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]">
+                      <div class="flex-shrink-0 flex items-center justify-center">
+                        <div class="w-14 h-14"><img src="images/proton-vpn.svg" alt="Proton vpn" class="h-full"></div>
+                      </div>
+                      <div class="ml-4">
+                        <div class="my-4">
+                          <img class="w-auto h-5" src="images/proton-vpn-desc.svg" alt="Proton VPN">
+                        </div>
+                        <p class="mt-1 text-sm">Your gateway to online freedom.</p>
+                      </div>
+                    </a>
+                  </div>
+                  <!-- PRODUCT DESCRIPTION -->
+                  <div class="mt-6 -ml-7 px-3 xl:px-0 md:mt-4 xl:mx-6 xl:mb-6 xl:mt-0">
+                    <a class="flex group p-8 items-center justify-between rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                      href="#">
+                      <div class="flex-1">
+                        <img src="images/proton-for-business.svg" alt="Proton for Business" class="h-8">
+                        <p class="mt-1 text-sm">Improve the security of your business and comply with data protection
+                          laws.</p>
+                      </div>
+                      <div
+                        class="duration-200 flex justify-center items-center h-12 w-12 rounded-full group-hover:bg-[#6d4aff]">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 duration-200 text-[#6d4aff] group-hover:text-white">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <!-- NAVIGATION ITEM -->
+              <li>
+                <a class="font-semibold hover:text-[#6d4aff] focus-visible:text-[#6d4aff]" href="#">Pricing</a>
+              </li>
+              <!-- NAVIGATION ITEM -->
+              <li class="relative" x-data="{
+                  isDropdownOpen : false
+                }" @click.away="isDropdownOpen = false">
+                <button
+                  class="inline-flex items-center gap-2 font-semibold hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                  :class="{'text-[#6d4aff]' : isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen" type="button">
+                  <span>Who we are</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-4 h-4 transition-transform" :class="{'rotate-180' : isDropdownOpen}">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <!-- WHO WE ARE DROPDOWN MENU -->
+                <div
+                  class="overflow-y-auto z-10 mt-3 w-screen transform bg-white shadow-sm ring-1 ring-black ring-opacity-5 absolute max-w-3xl -ml-52 2xl:-ml-8 rounded-lg opacity-100 translate-y-0"
+                  x-show="isDropdownOpen" x-transition>
+                  <div class="xl:grid grid-cols-2">
+                    <div class="space-y-3 xl:space-y-0 -ml-4 xl:ml-0 py-5 xl:p-6 xl:flex xl:flex-col xl:justify-end">
+                      <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                        href="#">
+                        <div class="text-lg font-bold">About us</div>
+                        <p class="mt-1 text-sm ">Proton stands for privacy. Always has, always will.</p>
+                      </a>
+                      <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                        href="#">
+                        <div class="text-lg font-bold">Team</div>
+                        <p class="mt-1 text-sm ">Meet the people building a better internet.</p>
+                      </a>
+                      <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                        href="#">
+                        <div class="text-lg font-bold">Impact</div>
+                        <p class="mt-1 text-sm ">Defending freedom through tech is why we exist.</p>
+                      </a>
+                      <a target="_blank" href="#"
+                        class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]">
+                        <div class="text-lg font-bold">Careers<span
+                            class="px-4 py-1 ml-4 rounded-full bg-purple-100 text-[#5c3be7] uppercase text-xs font-bold">We're
+                            hiring</span></div>
+                        <p class="mt-1 text-sm ">Seeking talented people to take Proton to the next level.</p>
+                      </a>
+                    </div>
+                    <div
+                      class="py-5 xl:p-6 border-t xl:border-t-0 border-gray-300 xl:bg-gray-50 xl:flex xl:flex-col xl:justify-start xl:space-y-3">
+                      <div class="flex flex-row flex-nowrap items-center -ml-3 xl:ml-0 p-3 ">
+                        <div
+                          class="hidden xl:flex flex-shrink-0 items-center justify-center h-10 w-10 sm:h-12 sm:w-12 mr-4 rounded-full bg-purple-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" aria-hidden="true" data-testid="dynamic-hero-icon" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                          </svg>
+                        </div>
+                        <p class=" xl:text-lg">We've always been guided by the Proton community.</p>
+                      </div>
+                      <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                        href="#">
+                        <div class="text-lg font-bold">Community</div>
+                        <p class="mt-1 text-sm ">Join the fight to make the internet a better place.</p>
+                      </a>
+                      <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                        href="#">
+                        <div class="text-lg font-bold">Open source</div>
+                        <p class="mt-1 text-sm ">Everyone is welcome to inspect our code. We're open.</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- NAVIGATION ITEM -->
+              <li class="relative" x-data="{
+                  isDropdownOpen : false
+                }" @click.away="isDropdownOpen = false">
+                <button
+                  class="inline-flex items-center gap-2 font-semibold hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                  :class="{'text-[#6d4aff]' : isDropdownOpen}" @click="isDropdownOpen = !isDropdownOpen" type="button">
+                  <span>Resources</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="w-4 h-4 transition-transform" :class="{'rotate-180' : isDropdownOpen}">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                <!-- RESOURCES DROPDOWN -->
+                <div
+                  class="overflow-y-auto z-10 mt-3 w-screen transform bg-white shadow-sm ring-1 ring-black ring-opacity-5 fixed left-0 opacity-100 translate-y-0"
+                  x-show="isDropdownOpen" x-transition>
+                  <div>
+                    <div
+                      class="bg-white xl:container px-8 md:px-12 lg:px-24 xl:mx-auto xl:grid xl:grid-cols-3 xl:bg-transparent">
+                      <div class="space-y-3 py-5 xl:px-6 xl:py-16">
+                        <div class="text-xl text-[#372580] xl:ml-4">Get started</div>
+                        <hr class="w-12 h-1.5 rounded-full border-none hidden xl:block mt-4 mb-8 ml-4 bg-[#6d4aff]"><a
+                          class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                          href="#">
+                          <div class="text-lg font-bold">Switch to Proton</div>
+                          <p class="mt-1 text-sm ">Move to Proton in just a few clicks with Easy Switch.</p>
+                        </a>
+                      </div>
+                      <div class="space-y-3 py-5 border-t border-gray-300 xl:px-6 xl:py-16 xl:border-0">
+                        <div class="text-xl text-[#372580] xl:ml-4">Resources</div>
+                        <hr class="w-12 h-1.5 rounded-full border-none hidden xl:block mt-4 mb-8 ml-4 bg-[#6d4aff]">
+                        <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                          href="#">
+                          <div class="text-lg font-bold">Blog</div>
+                          <p class="mt-1 text-sm ">Latest news on privacy and the internet.</p>
+                        </a>
+                        <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                          href="#">
+                          <div class="text-lg font-bold">News</div>
+                          <p class="mt-1 text-sm ">Proton announcements, audits, and releases.</p>
+                        </a>
+                        <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                          href="#">
+                          <div class="text-lg font-bold">Help and support</div>
+                          <p class="mt-1 text-sm ">Guides and customer support for Proton products.</p>
+                        </a>
+                      </div>
+                      <div class="space-y-3 py-5 border-t border-gray-300 xl:px-6 xl:py-16 xl:border-0 xl:bg-gray-50">
+                        <div class="text-xl text-[#372580] xl:ml-4">Download the apps</div>
+                        <hr class="w-12 h-1.5 rounded-full border-none hidden xl:block mt-4 mb-8 ml-4 bg-[#6d4aff]">
+                        <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                          href="#">
+                          <div class="text-lg font-bold">Proton Mail</div>
+                        </a>
+                        <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                          href="#">
+                          <div class="text-lg font-bold">Proton Calendar</div>
+                        </a>
+                        <a target="_blank" href="#"
+                          class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0">
+                          <div class="text-lg font-bold">Proton VPN</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <!-- NAVIGATION ITEM -->
+              <li>
+                <a class="font-semibold hover:text-[#6d4aff] focus-visible:text-[#6d4aff]" href="#">For Business</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <!-- SIGN UP & CREATE ACCOUNT BUTTONS -->
+        <div class="hidden xl:shrink-0 items-center md:flex md:gap-4">
+          <a target="_self" href="#"
+            class="transition-all text-[#6d4aff] inline-block rounded-full font-bold text-base py-1.5 px-5 border-2 border-[#6d4aff] text-center hover:bg-[#efebff] hover:border-[#4a2dc5] hover:text-[#4a2dc5]">
+            Sign in
+          </a>
+          <a class="transition-all text-white border-2 border-[#6d4aff] bg-[#6d4aff] inline-block rounded-full font-bold text-base py-1.5 px-5 btn-solid-purple text-center hover:bg-[#4a2dc5] hover:border-[#4a2dc5]"
+            href="#">
+            Create a free account
+          </a>
+        </div>
+        <!-- HAMBURGER ICON & MENU -->
+        <div class="xl:hidden justify-self-end">
+          <div x-data="{
+            isSideMenuOpen: false,
+            bodyOverflow: function () {
+              document.querySelector('body').classList.remove('overflow-hidden', 'overflow-visible');
+              document.querySelector('body').classList.add(this.isSideMenuOpen ? 'overflow-hidden' : 'overflow-visible');
+            }
+          }">
+            <button type="button" @click="
+                isSideMenuOpen = true;
+                bodyOverflow();
+              " class="block outline-none text-[#111827] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="h-7 w-7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+            <!-- SIDEMENU FOR SMALLER DEVICES -->
+            <div>
+              <!-- SIDEMENU BG OVERLAY -->
+              <div class="fixed inset-0 bg-[#111827] opacity-50 transition-all" x-show="isSideMenuOpen" @click="
+                  isSideMenuOpen = false;
+                  bodyOverflow();
+                " x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-50" x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-50" x-transition:leave-end="opacity-0">
+              </div>
+              <!-- SIDEMENU CONTAINER -->
+              <div class="flex flex-col fixed top-0 right-0 bottom-0 left-16 bg-white md:left-32 z-30"
+                x-show="isSideMenuOpen" x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+                x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+                x-transition:leave-end="translate-x-full">
+                <!-- SIDEMENU HEADER & CLOSE BTN -->
+                <div class="flex justify-between h-8 my-5 mr-5 ml-10">
+                  <!-- LOGO -->
+                  <div class="flex">
+                    <img src="images/proton-logo-sm.svg" alt="PROTON LOGO"
+                      class="inline-block w-auto h-auto max-w-full max-h-full">
+                  </div>
+                  <!-- SIDEMENU CLOSE BTN -->
+                  <button type="button" @click="
+                      isSideMenuOpen = false;
+                      bodyOverflow();
+                    " class="block outline-none text-[#111827] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                    tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" class="h-7 w-7">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                </div>
+                <!-- SIDEMENU NAVIGATION -->
+                <nav class="flex-grow overflow-y-auto relative py-5 pr-5 pl-10">
+                  <ul>
+                    <!-- SIDEMENU ITEM -->
+                    <li>
+                      <a class="flex items-center outline-none py-5 font-semibold text-base text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                        href="#">
+                        Security &amp; Privacy
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 ml-1 text-[#6d4aff]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </a>
+                    </li>
+                    <!-- SIDEMENU ITEM -->
+                    <li x-data="{
+                      isSubmenuOpen: false
+                    }">
+                      <button
+                        class="flex items-center outline-none py-5 font-semibold text-base text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                        type="button" @click="isSubmenuOpen = true">
+                        Products
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 ml-1 text-[#6d4aff]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </button>
+                      <!-- SIDEMENU SUBMENU -->
+                      <div class="absolute inset-0 py-5 pr-5 pl-10 bg-white" x-show="isSubmenuOpen">
+                        <!-- BREADCRUMB -->
+                        <button @click="isSubmenuOpen = false" type="button"
+                          class="flex flex-wrap items-center mt-5 mb-2 text-sm text-[#372580]">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-7 h-7 mr-3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                          </svg>
+                          Back / <span class="text-[#9ca3af]">&nbsp;Products</span>
+                        </button>
+                        <!-- SUBMENU CONTENT -->
+                        <div>
+                          <!-- PRODUCT POINTS -->
+                          <div class="relative -ml-7 px-3 xl:ml-0 xl:px-6 xl:py-6 xl:grid xl:grid-cols-2">
+                            <!-- PROTON MAIL -->
+                            <a class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="flex-shrink-0 flex items-center justify-center">
+                                <div class="w-14 h-14">
+                                  <img src="images/proton-mail.svg" alt="Proton mail" class="h-full">
+                                </div>
+                              </div>
+                              <div class="ml-4">
+                                <div class="my-4"><img class="w-auto h-4" src="images/proton-mail-desc.svg"
+                                    alt="Proton Mail">
+                                </div>
+                                <p class="mt-1 text-xs">Encrypted email that's private by default.</p>
+                              </div>
+                            </a>
+                            <!-- PROTON CALENDER -->
+                            <a class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="flex-shrink-0 flex items-center justify-center">
+                                <div class="w-14 h-14"><img src="images/proton-calender.svg" alt="Proton calendar"
+                                    class="h-full"></div>
+                              </div>
+                              <div class="ml-4">
+                                <div class="my-4"><img class="w-auto h-4" src="images/proton-calender-desc.svg"
+                                    alt="Proton Calendar"></div>
+                                <p class="mt-1 text-xs">Your calendar is a record of your life. Keep it safe.</p>
+                              </div>
+                            </a>
+                            <!-- PROTION DRIVE -->
+                            <a class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="flex-shrink-0 flex items-center justify-center">
+                                <div class="w-14 h-14"><img src="images/proton-drive.svg" alt="Proton drive"
+                                    class="h-full">
+                                </div>
+                              </div>
+                              <div class="ml-4">
+                                <div class="my-4"><img class="w-auto h-4" src="images/proton-drive-desc.svg"
+                                    alt="Proton Drive">
+                                </div>
+                                <p class="mt-1 text-xs">Secure cloud storage that gives you control of your data.</p>
+                              </div>
+                            </a>
+                            <!-- PROTON VPN -->
+                            <a target="_blank" href="#"
+                              class="p-4 flex items-start rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]">
+                              <div class="flex-shrink-0 flex items-center justify-center">
+                                <div class="w-14 h-14"><img src="images/proton-vpn.svg" alt="Proton vpn" class="h-full">
+                                </div>
+                              </div>
+                              <div class="ml-4">
+                                <div class="my-4">
+                                  <img class="w-auto h-4" src="images/proton-vpn-desc.svg" alt="Proton VPN">
+                                </div>
+                                <p class="mt-1 text-xs">Your gateway to online freedom.</p>
+                              </div>
+                            </a>
+                          </div>
+                          <!-- PROTON FOR BUSINESS -->
+                          <div class="mt-6 -ml-7 px-3 xl:px-0 md:mt-4 xl:mx-6 xl:mb-6 xl:mt-0">
+                            <a class="flex group p-8 items-center justify-between rounded-lg hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="flex-1">
+                                <img src="images/proton-for-business.svg" alt="Proton for Business" class="h-7">
+                                <p class="mt-1 text-xs">Improve the security of your business and comply with data
+                                  protection
+                                  laws.</p>
+                              </div>
+                              <div
+                                class="duration-200 flex justify-center items-center h-12 w-12 rounded-full group-hover:bg-[#6d4aff]">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                  stroke="currentColor"
+                                  class="w-5 h-5 duration-200 text-[#6d4aff] group-hover:text-white">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- SIDEMENU ITEM -->
+                    <li>
+                      <a class="flex items-center outline-none py-5 font-semibold text-base text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                        href="#">
+                        Pricing
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 ml-1 text-[#6d4aff]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </a>
+                    </li>
+                    <!-- SIDEMENU ITEM -->
+                    <li x-data="{
+                      isSubmenuOpen: false
+                    }">
+                      <button
+                        class="flex items-center outline-none py-5 font-semibold text-base text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                        type="button" @click="isSubmenuOpen = true">
+                        Who we are
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 ml-1 text-[#6d4aff]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </button>
+                      <!-- SIDEMENU SUBMENU -->
+                      <div class="absolute inset-0 py-5 pr-5 pl-10 bg-white" x-show="isSubmenuOpen">
+                        <!-- BREADCRUMB -->
+                        <button @click="isSubmenuOpen = false" type="button"
+                          class="flex flex-wrap items-center mt-5 mb-2 text-sm text-[#372580]">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-7 h-7 mr-3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                          </svg>
+                          Back / <span class="text-[#9ca3af]">&nbsp;Who we are</span>
+                        </button>
+                        <!-- SIDEMENU CONTENT -->
+                        <div class="xl:grid grid-cols-2 bg-white">
+                          <!-- TOP CONTENT BOX -->
+                          <div
+                            class="space-y-3 xl:space-y-0 -ml-4 xl:ml-0 py-5 xl:p-6 xl:flex xl:flex-col xl:justify-end">
+                            <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="text-sm font-bold">About us</div>
+                              <p class="mt-1 text-xs ">Proton stands for privacy. Always has, always will.</p>
+                            </a>
+                            <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="text-sm font-bold">Team</div>
+                              <p class="mt-1 text-xs ">Meet the people building a better internet.</p>
+                            </a>
+                            <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]"
+                              href="#">
+                              <div class="text-sm font-bold">Impact</div>
+                              <p class="mt-1 text-xs ">Defending freedom through tech is why we exist.</p>
+                            </a>
+                            <a target="_blank" href="#"
+                              class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff]">
+                              <div class="text-sm font-bold">Careers<span
+                                  class="px-4 py-1 ml-4 rounded-full bg-purple-100 text-[#5c3be7] uppercase text-xs font-bold">We're
+                                  hiring</span></div>
+                              <p class="mt-1 text-xs ">Seeking talented people to take Proton to the next level.</p>
+                            </a>
+                          </div>
+                          <!-- BOTTOM CONTENT BOX -->
+                          <div class="py-5 border-t border-[#d1d5db]">
+                            <!-- PROTON COMMUNITY -->
+                            <div class="flex flex-row flex-nowrap items-center -ml-3 xl:ml-0 p-3 text-body">
+                              <p class="text-sm">We've always been guided by the Proton community.</p>
+                            </div>
+                            <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-sm font-bold">Community</div>
+                              <p class="mt-1 text-xs ">Join the fight to make the internet a better place.</p>
+                            </a>
+                            <a class="block p-4 rounded-lg  hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-sm font-bold">Open source</div>
+                              <p class="mt-1 text-xs ">Everyone is welcome to inspect our code. We're open.</p>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- SIDEMENU ITEM -->
+                    <li x-data="{
+                      isSubmenuOpen: false
+                    }">
+                      <button @click="isSubmenuOpen = true"
+                        class="flex items-center outline-none py-5 font-semibold text-base text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                        type="button">
+                        Resources
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 ml-1 text-[#6d4aff]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </button>
+                      <!-- SIDEMENU SUBMENU -->
+                      <div class="absolute inset-0 py-5 pr-5 pl-10 bg-white" x-show="isSubmenuOpen">
+                        <!-- BREADCRUMB -->
+                        <button @click="isSubmenuOpen = false" type="button"
+                          class="flex flex-wrap items-center mt-5 mb-2 text-sm text-[#372580]">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-7 h-7 mr-3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                          </svg>
+                          Back / <span class="text-[#9ca3af]">&nbsp;Resources</span>
+                        </button>
+                        <!-- SIDEMENU CONTENT -->
+                        <div class="bg-white">
+                          <!-- GET STARTED -->
+                          <div class="space-y-3 py-5 xl:px-6 xl:py-16">
+                            <div class="text-lg text-[#372580] xl:ml-4">Get started</div>
+                            <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-purple-[#f7f5ff] -ml-4"
+                              href="#">
+                              <div class="text-sm font-bold">Switch to Proton</div>
+                              <p class="mt-1 text-xs">Move to Proton in just a few clicks with Easy Switch.</p>
+                            </a>
+                          </div>
+                          <!-- RESOURCES SMALLER -->
+                          <div class="space-y-3 py-5 border-t border-[#d1d5db]">
+                            <!-- HEADING -->
+                            <div class="text-lg text-[#372580]">Resources</div>
+                            <!-- SUB ITEMS -->
+                            <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-sm font-bold">Blog</div>
+                              <p class="mt-1 text-xs ">Latest news on privacy and the internet.</p>
+                            </a>
+                            <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-sm font-bold">News</div>
+                              <p class="mt-1 text-xs ">Proton announcements, audits, and releases.</p>
+                            </a>
+                            <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#f7f5ff] focus-visible:bg-[#f7f5ff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-sm font-bold">Help and support</div>
+                              <p class="mt-1 text-xs ">Guides and customer support for Proton products.</p>
+                            </a>
+                          </div>
+                          <!-- DOWNLOAD THIS APP -->
+                          <div class="space-y-3 py-5 border-t border-[#d1d5db]">
+                            <!-- HEADING -->
+                            <div class="text-lg text-[#372580]">Download the apps</div>
+                            <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-base font-bold">Proton Mail</div>
+                            </a>
+                            <a class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0"
+                              href="#">
+                              <div class="text-base font-bold">Proton Calendar</div>
+                            </a>
+                            <a target="_blank" href="#"
+                              class="block p-4 rounded-lg text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff] hover:bg-[#efebff] focus-visible:bg-[#efebff] -ml-4 xl:ml-0">
+                              <div class="text-base font-bold">Proton VPN</div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <!-- SIDEMENU ITEM -->
+                    <li>
+                      <a class="flex items-center outline-none py-5 font-semibold text-base text-[#372580] hover:text-[#6d4aff] focus-visible:text-[#6d4aff]"
+                        href="#">
+                        For Business
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-5 h-5 ml-1 text-[#6d4aff]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- SIDEMENU LOGIN & SIGNUP BTNs -->
+                <div class="flex flex-wrap justify-center gap-4 p-5 border-t border-purple-100">
+                  <a target="_self" href="#"
+                    class="transition-all text-[#6d4aff] inline-block rounded-full font-bold text-sm py-1.5 px-5 border-2 border-[#6d4aff] text-center hover:bg-[#efebff] hover:border-[#4a2dc5] hover:text-[#4a2dc5]">
+                    Sign in
+                  </a>
+                  <a class="transition-all text-white border-2 border-[#6d4aff] bg-[#6d4aff] inline-block rounded-full font-bold text-sm py-1.5 px-5 btn-solid-purple text-center hover:bg-[#4a2dc5] hover:border-[#4a2dc5]"
+                    href="#">
+                    Create a free account
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="mt-16 xl:mt-24"></div>
+    <!-- HEADER SECTION END -->
+    <!-- HERO SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 items-center lg:pr-0">
+        <!-- HERO TEXT BOX -->
+        <div class="text-center lg:col-start-1 lg:col-span-6 xl:col-span-5 2xl:col-start-2 lg:text-left mt-10 lg:mt-0">
+          <!-- HERO HEADING -->
+          <h1
+            class="lg:max-w-[38rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.75rem] lg:text-[3.5rem] !leading-none text-[#372580]">
+            <span class="font-thin">We advance society by</span> advancing freedom
+          </h1>
+          <!-- HERO DESCRIPTION -->
+          <p class="lg:max-w-[37rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-xl text-[#372580]">
+            At Proton, our social mission is at the heart of all we do. We believe in building an internet that works
+            for people and not just for profit.
+          </p>
+        </div>
+        <!-- HERO IMAGE BOX -->
+        <figure class="lg:col-start-7 lg:col-span-7 xl:lg-col-span-6">
+          <img src="images/hero-image.webp" alt="hero-image">
+          <!-- SCREEN READER TEXT -->
+          <figcaption class="opacity-0 absolute w-1 overflow-hidden p-0">Proton makes a social impact by improving
+            access to privacy</figcaption>
+        </figure>
+      </div>
+    </section>
+    <!-- HERO SECTION END -->
+    <!-- OPEN SOURCE SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] lg:py-10 py-4 flex flex-col text-center items-center">
+        <!-- SECTION HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-[#372580] mx-auto place-self-center text-center">
+          Proton provides free and open-source technology to millions of people and organizations to expand access to
+          privacy,
+          security, and freedom online.
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 mx-auto place-self-center text-center bg-[#6d4aff]">
+        <!-- LEARN MORE CTA -->
+        <div class="mx-auto place-self-center text-center mb-6">
+          <a target="_self" href="#"
+            class="transition-all text-[#6d4aff] inline-block rounded-full font-bold text-lg py-3.5 px-8 border-2 border-[#6d4aff] text-center hover:bg-[#efebff] hover:border-[#4a2dc5] hover:text-[#4a2dc5]">
+            Learn about open source
+          </a>
+        </div>
+        <!-- SECTION PARAGRAPH -->
+        <p class="max-w-[33.75rem] text-xl lg:max-w-[45.625rem] text-[#372580] mx-auto place-self-center text-center">
+          Without privacy, there can be no freedom of speech, and without freedom of speech, there can be no democracy.
+          Together
+          with millions of Proton users from around the world, we are working to build a better internet and society.
+        </p>
+      </div>
+    </section>
+    <!-- OPEN SOURCE SECTION END -->
+    <!-- BETTER WORLD SECTION START -->
+    <section class="bg-white">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] lg:py-10 py-4 flex flex-col text-left items-start">
+        <!-- SECTION HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-[#372580]">
+          Direct action for a <span class="text-[#6d4aff]">better</span> world
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 bg-[#6d4aff]">
+        <!-- SECTION PARAGRAPH -->
+        <p class="max-w-[33.75rem] text-xl lg:max-w-[45.625rem] text-[#372580]">
+          Each year, we work with the Proton user community to identify and fund important projects that are helping to
+          build the
+          kind of world we want to live in. We have distributed over $1,000,000 in direct financial grants. Some of the
+          organizations we have supported are listed below.
+        </p>
+      </div>
+    </section>
+    <!-- BETTER WORLD SECTION END -->
+    <!-- SPONSORS SECTION START -->
+    <section class="bg-white">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 py-2 mx-auto text-[#494b7a] grid gap-x-6 gap-y-9 md:gap-y-6 md:gap-x-10 xl:gap:x-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/netblocks.webp" alt="NetBlocks Logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/350.webp" alt="350 Logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/web-foundation.webp" alt="Web Foundation Logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/wireguard.webp" alt="Wireguard Logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/charter.webp" alt="Charter Logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/rsf.webp" alt="RSF LOGO">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/hrf.webp" alt="Human resouce fund logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/noyb.webp" alt="Noyb Logo">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/edri.webp" alt="EDRI LOGO">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/thirst.webp" alt="Thirst Project LOGO">
+        </div>
+
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <img src="images/ifj.webp" alt="IFJ LOGO">
+        </div>
+        <!-- SPONSOR -->
+        <div class="space-y-6">
+          <p class="text-lg">And many more...</p>
+        </div>
+      </div>
+    </section>
+    <!-- SPONSORS SECTION END -->
+    <!-- COMMUNITY SECTION SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a]">
+        <!-- SECTION HEADING BOX -->
+        <div class="lg:py-10 py-4 flex flex-col text-left items-start">
+          <!-- SECTION HEADING -->
+          <h2
+            class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-[#372580]">
+            Community spotlight
+          </h2>
+          <!-- DIVIDER -->
+          <hr class="w-12 h-1.5 rounded-full border-none mb-6 bg-[#6d4aff]">
+        </div>
+        <!-- COMMUNITY CARDS BOX -->
+        <div class="py-16 text-[#372580] grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12">
+          <!-- CARD -->
+          <div class="space-y-6">
+            <!-- CARD IMAGE -->
+            <div class="rounded-lg aspect-[16/10]">
+              <img src="images/community-img-1.webp" class="h-full w-full object-cover rounded-lg" alt="Thumbnail">
+            </div>
+            <!-- CARD HEADING -->
+            <div class="flex items-center">
+              <h3 class="self-start text-2xl font-bold text-[#372580]">Violence, intimidation, and exile from Belarus
+              </h3>
+            </div>
+            <!-- CARD DESCRIPTION -->
+            <p class="text-lg">
+              In 2018 we financed Charter’97, the most popular independent news outlet in Belarus.
+              Editor-in-chief (and Proton user) Natalya Radina has been on the front lines of Belarus's fight for
+              freedom.
+            </p>
+            <!-- CARD LINK -->
+            <div>
+              <a class="relative inline-block pr-5 text-lg font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+                href="#">
+                <span
+                  class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+                  Read Natalya’s story
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <!-- CARD -->
+          <div class="space-y-6">
+            <!-- CARD IMAGE -->
+            <div class="rounded-lg aspect-[16/10]">
+              <img src="images/community-img-2.webp" class="h-full w-full object-cover rounded-lg" alt="Thumbnail">
+            </div>
+            <!-- CARD HEADING -->
+            <div class="flex items-center">
+              <h3 class="self-start text-2xl font-bold text-[#372580]">
+                For journalists working in war zones or under repressive governments, digital security and privacy can
+                be the difference
+                between life and death
+              </h3>
+            </div>
+            <!-- CARD DESCRIPTION -->
+            <p class="text-lg">
+              In 2019, we supported Reporters Without Borders’ digital security training program for journalists in the
+              field.
+              Together, we funded scholarships for journalists from conflict zones and repressive regimes. Reporters
+              Without Borders
+              uses Proton Mail for secure communications.
+            </p>
+            <!-- CARD LINK -->
+            <div>
+              <a class="relative inline-block pr-5 text-lg font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+                href="#">
+                <span
+                  class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+                  Learn more
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- COMMUNITY SECTION SECTION END -->
+    <!-- FREEDOM SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div
+        class="lg:py-10 container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] py-4 flex flex-col text-left items-start">
+        <!-- SECTION HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-[#372580]">
+          Defending <span class="text-[#6d4aff]">freedom</span> through technology
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 bg-[#6d4aff]">
+        <!-- SECTION PARAGRAPH -->
+        <p class="max-w-[33.75rem] text-xl lg:max-w-[45.625rem] text-[#372580]">
+          Proton powers newsrooms and human rights organizations around the world. In addition to securing the data and
+          communications of some of the world's largest international organizations, we also protect thousands of
+          individual
+          journalists and activists in the field.
+        </p>
+      </div>
+    </section>
+    <!-- FREEDOM SECTION END -->
+    <!-- SERVICES SECTION -->
+    <section class="bg-[#f7f5ff]">
+      <!-- SERVICE CARDS GRID -->
+      <div
+        class="py-16 container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-1 sm:grid-cols-2">
+        <!-- SERVICE CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+              </path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Keeping your contacts safe</h3>
+          </div>
+          <!-- CARD PARAGRAPH -->
+          <p class="text-lg">
+            After working with journalists in the field, we recognized their need for a better way to protect
+            their sources. As a result, we developed the world’s first end-to-end encrypted contacts manager.
+          </p>
+        </div>
+        <!-- SERVICE CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+              </path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Preventing advanced attacks</h3>
+          </div>
+          <!-- CARD PARAGRAPH -->
+          <p class="text-lg">
+            Powerful adversaries, such as governments, have sophisticated tools for stealing data or breaking into
+            devices. Proton
+            Mail's advanced features like Address Verification offer protection against encryption key tampering, while
+            technologies
+            like AppKey Protection System help keep data secure even if a device is physically stolen.
+          </p>
+          <!-- CARD LINK -->
+          <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+            href="#">
+            <span
+              class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+              Discover Proton Mail security
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <!-- SERVICE CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+              </path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Defending against censorship</h3>
+          </div>
+          <!-- CARD PARAGRAPH -->
+          <p class="text-lg">
+            Services like Proton VPN help provide free and uncensored internet to millions of people living under
+            authoritarian
+            regimes worldwide. Whether it’s Belarus, Russia, Turkey, Iran, or countless other places around the world,
+            we open the
+            internet, help shed light on the truth, and provide freedom during the darkest times.
+          </p>
+          <!-- CARD LINK -->
+          <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+            href="#">
+            <span
+              class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+              Overcome censorship with Proton VPN
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <!-- SERVICE CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7">
+              </path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Free and open-source software</h3>
+          </div>
+          <!-- CARD PARAGRAPH -->
+          <p class="text-lg">
+            We support tens of millions of free Proton accounts in order to provide secure internet services to all,
+            irrespective of
+            one’s ability to pay. Our code and software libraries are open source and freely available, powering
+            thousands of apps
+            around the world that help defend freedom. Simply put, we believe that privacy is a fundamental human right
+            for all.
+          </p>
+          <!-- CARD LINK -->
+          <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+            href="#">
+            <span
+              class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+              Learn more about open source
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- CREATE ACCOUNT SECTION START -->
+    <section class="bg-[#1b1340]">
+      <div
+        class="py-4 lg:py-11 container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto flex flex-col text-center items-center">
+        <!-- PROTON LOGO 2 -->
+        <img src="images/proton-logo-2.svg" alt="PROTON LOGO" class="w-12 h-auto pb-6">
+        <!-- SECTION HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-white mx-auto place-self-center text-center">
+          Protecting data under the most challenging circumstances has directly led to innovations that benefit all
+          Proton users
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 mx-auto place-self-center text-center bg-[#6d4aff]">
+        <!-- CREATE ACCOUNT CTA -->
+        <div>
+          <a target="_self" href="#"
+            class="transition-all text-white inline-block rounded-full font-bold text-lg py-3.5 px-8 border-2 border-white text-center hover:bg-[#efebff] hover:border-white hover:text-[#6d4aff]">
+            Create a free account
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- CREATE ACCOUNT SECTION END -->
+    <!-- STANDING GROUND SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 items-center lg:pr-0 py-6 lg:py-12">
+        <!-- TEXT BOX -->
+        <div class="text-center lg:col-start-1 lg:col-span-6 xl:col-span-5 2xl:col-start-2 lg:text-left mt-10 lg:mt-0">
+          <!-- SECTION HEADING -->
+          <h2
+            class="mb-2 lg:mb-6 max-w-[33.75rem] sm:text-4xl md:text-[2.25rem] !leading-none lg:max-w-[45.625rem] text-[#372580] text-4xl my-6 px-6 md:px-8 lg:px-0 mx-auto">
+            Standing with our community no matter what
+          </h2>
+          <!-- SECTION DESCRIPTION -->
+          <p class="lg:max-w-[37rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-lg text-[#372580]">
+            During the 2019 pro-democracy protests in Hong Kong, many tech companies, including Apple, turned their
+            backs on the
+            demonstrators in order to preserve access to the Chinese market. Proton Mail stepped in and provided free
+            encrypted
+            email services to activists working on the ground.
+          </p>
+          <!-- SECTION LINK -->
+          <div>
+            <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+              href="#">
+              <span
+                class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+                Read more
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- STANDING IMAGE BOX -->
+        <figure class="lg:col-start-7 lg:col-span-7 xl:lg-col-span-6">
+          <img src="images/standing-img.webp" alt="standing ground image">
+          <!-- SCREEN READER TEXT -->
+          <figcaption class="opacity-0 absolute w-1 overflow-hidden p-0">
+            Standing with our community no matter what
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <!-- STANDNG GROUND SECTION END -->
+    <!-- VIDEO SECTION START -->
+    <section class="py-8 lg:py-32 bg-[#f7f5ff]">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] flex flex-col lg:flex-row justify-between">
+        <!-- VIDEO BOX -->
+        <div class="order-first w-full lg:w-1/2 my-8 lg:my-0">
+          <!-- VIDEO -->
+          <div class="aspect-video">
+            <iframe id="youtube-player" class="w-full h-full border-0"
+              src="https://www.youtube-nocookie.com/embed/QmFTporQpM8?autoplay=0&mute=0&controls=1&origin=https%3A%2F%2Fproton.me&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&widgetid=1"
+              allowfullscreen="true"></iframe>
+          </div>
+        </div>
+        <!-- TEXT BOX -->
+        <div
+          class="flex flex-col items-center lg:items-start justify-center w-full lg:w-2/5 text-center lg:text-left mx-auto lg:mx-0">
+          <!-- SECTION HEADING -->
+          <h2
+            class="mb-2 lg:mb-6 max-w-[33.75rem] sm:text-4xl md:text-[2.25rem] !leading-none lg:max-w-[45.625rem] text-[#372580] text-4xl my-6 px-6 md:px-8 lg:px-0 mx-auto lg:mx-0">
+            Hong Kong activist Nathan Law
+          </h2>
+          <!-- SECTION DESCRIPTION -->
+          <p class="lg:max-w-[39rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-lg text-[#372580]">
+            Former Hong Kong legislator and Proton user Nathan Law describes how freedom and privacy are under attack in
+            Hong Kong.
+            In 2020, with the help of the Proton community, we raised $100,000 for humanitarian relief for Hong Kong
+            activists who
+            were violently suppressed.
+          </p>
+        </div>
+    </section>
+    <!-- VIDEO SECTION END -->
+    <!-- ADVOCACY SECTION START -->
+    <section class="bg-[#1b1340]">
+      <!-- SECTION HEADING BOX -->
+      <div
+        class="lg:py-10 container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto py-4 flex flex-col text-center items-center">
+        <!-- HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-white mx-auto place-self-center text-center">
+          Advocacy for greater privacy
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 mx-auto place-self-center text-center bg-[#6d4aff]">
+        <!-- SECTION PARAGRAPH -->
+        <div class="max-w-[32.75rem] text-xl lg:max-w-[42.625rem] text-white mx-auto place-self-center text-center">
+          Access to privacy often
+          depends upon where you live. At Proton, we are committed to defending and promoting the right to privacy
+          around the
+          world.
+        </div>
+      </div>
+      <!-- ADVOCACY CARD -->
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 items-center lg:pl-0 py-6 lg:py-12">
+        <!-- STANDING IMAGE BOX -->
+        <figure class="lg:col-start-1 lg:col-span-7">
+          <img src="images/advocacy-img.webp" alt="Advocacy image">
+          <!-- SCREEN READER TEXT -->
+          <figcaption class="opacity-0 absolute w-1 overflow-hidden p-0">
+            Policy advocacy
+          </figcaption>
+        </figure>
+        <!-- TEXT BOX -->
+        <div class="text-center lg:text-left mt-10 lg:mt-0 lg:col-start-8 lg:col-span-6 xl:lg-col-span-6">
+          <!-- SECTION HEADING -->
+          <h2
+            class="mb-2 lg:mb-6 max-w-[33.75rem] sm:text-4xl md:text-[2.25rem] !leading-none lg:max-w-[45.625rem] text-white text-4xl my-6 px-6 md:px-8 lg:px-0 mx-auto lg:mx-0">
+            Policy advocacy
+          </h2>
+          <!-- SECTION DESCRIPTION -->
+          <p class="lg:max-w-[37rem] mx-auto lg:mx-0 mb-6 max-w-[33.75rem] text-lg text-white">
+            Through our policy, government affairs, and legal team in Brussels and Geneva, we provide testimony and
+            thought
+            leadership to advance regulatory and legislative solutions that protect privacy and fair competition, both
+            of which are
+            essential to democracy. We participate in Swiss and EU discussions, and our work has been cited in US
+            Congressional
+            reports. We’re also an active participant at the United Nations’ Internet Governance Forum.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- ADVOCACY SECTION END -->
+    <!-- EDUCAION & TRAINING SECTION START -->
+    <section class="bg-[#1b1340]">
+      <!-- SECTION HEADING BOX -->
+      <div
+        class="lg:py-10 container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto py-4 flex flex-col text-center items-center">
+        <!-- HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-white mx-auto place-self-center text-center">
+          Education and training
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 mx-auto place-self-center text-center bg-[#6d4aff]">
+        <!-- SECTION PARAGRAPH -->
+        <div class="max-w-[32.75rem] text-xl lg:max-w-[42.625rem] text-white mx-auto place-self-center text-center">
+          We believe that knowledge is power. Whether it's publishing articles, sharing knowledge through the Proton
+          community, or
+          holding training sessions, we work continually to empower individuals and businesses worldwide. Some examples
+          of our
+          work in this area include:
+        </div>
+      </div>
+      <!-- EDUCATION AND TRAINING CARDS -->
+      <div
+        class="container max-w-[120rem] md:px-12 lg:px-24 mx-auto grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 lg:grid-cols-2 px-6 lg:pl-24 py-8 lg:py-28 z-0">
+        <!-- CARD -->
+        <div
+          class="grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-4 md:grid-cols-8 lg:grid-cols-6 grid-rows-[4em_auto_auto]">
+          <!-- BG BOX -->
+          <div
+            class="row-span-full col-start-2 md:col-start-2 lg:col-start-2 col-span-3 md:col-span-7 lg:col-span-4 bg-[#6c4bfe] rounded-xl h-[30em] lg:h-[38em]">
+          </div>
+          <!-- CARD CONTENT -->
+          <div
+            class="col-start-1 md:col-start-1 lg:col-start-1 col-span-3 md:col-span-7 lg:col-span-4 row-start-2 row-span-1 bg-white p-6 sm:p-12 rounded-3xl shadow-m z-10">
+            <!-- CARD HEADING -->
+            <h2 class="pb-6 text-[2rem] font-semibold !leading-tight text-[#372580]">Email encryption: A helmet for
+              cyberspace</h2>
+            <!-- CARD PARAGRAPH -->
+            <div class="pb-6 text-base text-[#1f2937]">
+              <p>At the Second Asian Investigative Journalism Conference in Kathmandu, Nepal, we organized a training
+                session to
+                educate investigative journalists on how to properly use email encryption to protect their communication
+                privacy
+                while working under repressive governments.</p>
+            </div>
+            <!-- CARD LINK -->
+            <div>
+              <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+                href="#">
+                <span
+                  class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+                  Read more
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- CARD -->
+        <div
+          class="grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-4 md:grid-cols-8 lg:grid-cols-6 grid-rows-[4em_auto_auto]">
+          <!-- BG BOX -->
+          <div
+            class="row-span-full col-start-2 md:col-start-2 lg:col-start-2 col-span-3 md:col-span-7 lg:col-span-4 bg-[#6c4bfe] rounded-xl h-[30em] lg:h-[38em]">
+          </div>
+          <!-- CARD CONTENT -->
+          <div
+            class="col-start-1 md:col-start-1 lg:col-start-1 col-span-3 md:col-span-7 lg:col-span-4 row-start-2 row-span-1 bg-white p-6 sm:p-12 rounded-3xl shadow-m z-10">
+            <!-- CARD HEADING -->
+            <h2 class="pb-6 text-[2rem] font-semibold !leading-tight text-[#372580]">
+              GDPR.EU: The definitive GDPR guide
+            </h2>
+            <!-- CARD PARAGRAPH -->
+            <div class="pb-6 text-base text-[#1f2937]">
+              <p>
+                With the support of the Horizon 2020 Framework Programme of the European Union, Proton is the publisher
+                and maintainer
+                of GDPR.EU, the definitive guide to GDPR compliance that has become an invaluable tool for businesses
+                large and small.
+              </p>
+            </div>
+            <!-- CARD LINK -->
+            <div>
+              <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+                href="#">
+                <span
+                  class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+                  Read more
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- EDUCAION & TRAINING SECTION END -->
+    <!-- TAKE ACTION SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div
+        class="lg:py-10 container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] py-4 flex flex-col text-left items-start">
+        <!-- SECTION HEADING -->
+        <h2
+          class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-[#372580]">
+          Take action
+        </h2>
+        <!-- DIVIDER -->
+        <hr class="w-12 h-1.5 rounded-full border-none mb-6 bg-[#6d4aff]">
+        <!-- SECTION PARAGRAPH -->
+        <p class="max-w-[33.75rem] text-xl lg:max-w-[45.625rem] text-[#372580]">
+          We can’t accomplish our mission without you. There are many ways to get involved with Proton.
+        </p>
+      </div>
+    </section>
+    <!-- TAKE ACTION SECTION END -->
+    <!-- JOIN PROTON SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div
+        class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] py-16 grid gap-x-6 gap-y-12 md:gap-x-10 xl:gap:x-12 grid-cols-1 md:grid-cols-3">
+        <!-- JOIN CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+              </path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Join the Proton community online and help spread
+              privacy</h3>
+          </div>
+          <!-- CARD LINK -->
+          <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+            href="#">
+            <span
+              class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+              Explore the Proton community
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <!-- JOIN CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Join our team and make a direct impact</h3>
+          </div>
+          <!-- CARD LINK -->
+          <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+            href="#">
+            <span
+              class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+              See job openings
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+        <!-- JOIN CARD -->
+        <div class="space-y-6">
+          <!-- CARD ICON -->
+          <div class="flex flex-none items-center justify-center w-16 h-16 rounded-full bg-[#efebff]">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5 text-[#372580]">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path>
+            </svg>
+          </div>
+          <!-- CARD HEADING -->
+          <div class="flex items-center">
+            <h3 class="self-start text-2xl font-bold text-[#372580]">Help us make Proton available in your native
+              language</h3>
+          </div>
+          <!-- CARD LINK -->
+          <a class="relative inline-block pr-5 text-[1.125rem] font-bold no-underline leading-5 focus:outline-none text-[#6d4aff] hover:text-[#5c3be7] focus:text-[#5c3be7]"
+            href="#">
+            <span
+              class="relative before:absolute before:w-full before:h-0.5 before:duration-300 before:bg-[#5c3be7] before:top-full before:left-0 before:transition-all before:scale-x-0 before:origin-left hover:before:scale-x-100">
+              Become a translator
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-4 h-4 absolute top-1/2 right-0 -mt-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- JOIN PROTON SECTION END -->
+    <!-- CREATE ACCOUNT CARD SECTION START -->
+    <section class="bg-[#f7f5ff]">
+      <div class="container max-w-[120rem] mx-auto text-[#494b7a] py-6 lg:py-20 px-0 lg:px-12 xl:px-24">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-10 gap-0 items-center lg:mx-auto px-12 lg:px-0 py-7 lg:py-14 lg:rounded-3xl border-t lg:border border-purple-100 overflow-hidden bg-white lg:max-w-[84.375rem] 
+          shadow-[28px_20px_10px_hsla(0,0%,100%,.5),107.708px_63.4353px_60px_rgba(74,45,197,.2),63.4183px_37.3507px_31.296px_rgba(74,45,197,.145),32.5708px_19.1828px_14.688px_rgba(74,45,197,.112),13.0973px_7.71373px_6.432px_rgba(74,45,197,.088),2.92965px_1.72544px_2.784px_rgba(74,45,197,.055),inset_6px_4px_16px_#fff]">
+          <!-- CARD LOGO BOX -->
+          <div
+            class="lg:col-span-3 row-span-full flex items-center justify-center pt-14 pb-8 lg:py-5 h-full lg:border-r">
+            <img src="images/proton-logo-2.svg" alt="Proton Logo"
+              class="inline-block w-1/5 lg:w-3/5 xl:w-1/2 max-h-32 lg:max-h-full">
+          </div>
+          <!-- CARD CONTENT BOX -->
+          <div class="lg:col-span-7 lg:px-16 text-center lg:text-left">
+            <!-- HEADING -->
+            <h2
+              class="text-[2.4rem] md:text-[2.75rem] text-[#372580] max-w-[33.75rem] lg:max-w-[37.5rem] 2xl:max-w-[45.625rem] mx-auto lg:ml-0 !leading-tight">
+              Get your free Proton account and start protecting your privacy
+            </h2>
+            <!-- PARAGRAPH -->
+            <p class="py-6 text-xl">One account for all Proton services</p>
+            <!-- CREATE ACC BTN & IMAGES -->
+            <div
+              class="flex flex-row flex-wrap place-content-center lg:place-content-start md:space-x-8 items-center mt-3 justify-center">
+              <!-- CREATE ACC BTN -->
+              <a class="transition-all text-white border-2 border-[#6d4aff] bg-[#6d4aff] inline-block rounded-full font-bold text-[1rem] md:text-[1.375rem] !leading-tight py-3 md:py-3.5 px-5 md:px-8 text-center hover:bg-[#4a2dc5] hover:border-[#4a2dc5]"
+                href="#">
+                Create a free account
+              </a>
+              <!-- IMAGES GRID -->
+              <div class="flex justify-center w-full md:w-auto my-6">
+                <!-- IMAGE -->
+                <div class="inline-block w-14 h-14"><img src="images/proton-mail.svg" alt="Proton mail" class="h-full">
+                </div>
+                <!-- IMAGE -->
+                <div class="inline-block w-14 h-14"><img src="images/proton-vpn.svg" alt="Proton mail" class="h-full">
+                </div>
+                <!-- IMAGE -->
+                <div class="inline-block w-14 h-14"><img src="images/proton-drive.svg" alt="Proton mail" class="h-full">
+                </div>
+                <!-- IMAGE -->
+                <div class="inline-block w-14 h-14"><img src="images/proton-calender.svg" alt="Proton mail"
+                    class="h-full">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CREATE ACCOUNT CARD SECTION END -->
+    <!-- FOOTER START -->
+    <footer class="pt-20 pb-12 bg-[#f7f5ff]">
+      <div class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a]">
+        <!-- FOOTER PRIMARY 1 -->
+        <div
+          class="grid gap-x-6 gap-y-12 xl:gap:x-12 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 md:gap-x-6 lg:gap-x-3 xl:gap-x-4">
+          <!-- LOGO & SOCIALS -->
+          <div>
+            <div class="w-20">
+              <a aria-current="page" class="" href="#">
+                <img src="images/proton-logo-2.svg" alt="Proton homepage">
+              </a>
+            </div>
+            <div class="w-40 mt-6">Proton - Privacy by default</div>
+            <div class="flex mt-5 space-x-1 h-6 ">
+              <a target="_blank" href="#"><img src="images/twitter.svg" alt="Follow us on Twitter"></a>
+              <a target="_blank" href="#"><img src="images/linkedin.svg" alt="Follow us on LinkedIn"></a>
+              <a target="_blank" href="#"><img src="images/reddit.svg" alt="Follow us on Reddit"></a>
+              <a target="_blank" href="#"><img src="images/instagram.svg" alt="Follow us on Instagram"></a>
+              <a target="_blank" href="#"><img src="images/facebook.svg" alt="Follow us on Facebook"></a>
+            </div>
+          </div>
+          <!-- FOOTER MENU FOR SMALLER DEVICES -->
+          <div class="md:hidden">
+            <!-- PRODUCTS DROPDOWN -->
+            <div
+              class="border-[#e2dbff] border-0 mt-2 rounded-2xl hover:border-[#6d4aff] focus:ring-[#c5b7ff] w-full mb-10"
+              x-data="{isDropdownOpen: false}">
+              <!-- TITLE BUTTON -->
+              <button type="button"
+                class="group rounded-xl flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring focus-visible:ring-[#6d4aff] focus-visible:ring-opacity-75"
+                @click="isDropdownOpen = !isDropdownOpen">
+                <span class="text-lg font-bold">Products</span>
+                <span
+                  class="bg-[#efebff] text-[#6d4aff] rounded-full group-focus:text-[#6d4aff] group-focus:bg-[#efebff] group-hover:bg-[#f7f5ff] lg:group-hover:bg-[#efebff] group-hover:text-[#6d4aff] lg:group-hover:text-[#6d4aff] group-focus-visible:bg-[#efebff] group-focus-visible:text-[#6d4aff] p-1 ml-6 self-start"
+                  aria-hidden="true">
+                  <!-- SVG OPEN -->
+                  <svg x-show="!isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <!-- SVG CLOSE -->
+                  <svg x-show="isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true" data-testid="dynamic-hero-icon" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd">
+                    </path>
+                  </svg>
+                </span>
+              </button>
+              <!-- PRODUCT MENU -->
+              <div class="py-6 px-6 text-base flex-col space-y-6 items-start flex" x-show="isDropdownOpen">
+                <ul class="list-disc">
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Proton Mail
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Proton Calendar
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Proton Drive
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Proton VPN
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Proton for Business
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- PRIVACY AND COMMUNITY DROPDOWN -->
+            <div
+              class="border-[#e2dbff] border-0 mt-2 rounded-2xl hover:border-[#6d4aff] focus:ring-[#c5b7ff] w-full mb-10"
+              x-data="{isDropdownOpen: false}">
+              <!-- TITLE BUTTON -->
+              <button type="button"
+                class="group rounded-xl flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring focus-visible:ring-[#6d4aff] focus-visible:ring-opacity-75"
+                @click="isDropdownOpen = !isDropdownOpen">
+                <span class="text-lg font-bold">Privacy and community</span>
+                <span
+                  class="bg-[#efebff] text-[#6d4aff] rounded-full group-focus:text-[#6d4aff] group-focus:bg-[#efebff] group-hover:bg-[#f7f5ff] lg:group-hover:bg-[#efebff] group-hover:text-[#6d4aff] lg:group-hover:text-[#6d4aff] group-focus-visible:bg-[#efebff] group-focus-visible:text-[#6d4aff] p-1 ml-6 self-start"
+                  aria-hidden="true">
+                  <!-- SVG OPEN -->
+                  <svg x-show="!isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <!-- SVG CLOSE -->
+                  <svg x-show="isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true" data-testid="dynamic-hero-icon" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd">
+                    </path>
+                  </svg>
+                </span>
+              </button>
+              <!-- PRIVACY AND COMMUNITY MENU -->
+              <div class="py-6 px-6 text-base flex-col space-y-6 items-start flex" x-show="isDropdownOpen">
+                <ul class="list-disc">
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Privacy and security
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Switch to Proton
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Community
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Open source
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Pricing
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- COMPANY DROPDOWN -->
+            <div
+              class="border-[#e2dbff] border-0 mt-2 rounded-2xl hover:border-[#6d4aff] focus:ring-[#c5b7ff] w-full mb-10"
+              x-data="{isDropdownOpen: false}">
+              <!-- TITLE BUTTON -->
+              <button type="button"
+                class="group rounded-xl flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring focus-visible:ring-[#6d4aff] focus-visible:ring-opacity-75"
+                @click="isDropdownOpen = !isDropdownOpen">
+                <span class="text-lg font-bold">Company</span>
+                <span
+                  class="bg-[#efebff] text-[#6d4aff] rounded-full group-focus:text-[#6d4aff] group-focus:bg-[#efebff] group-hover:bg-[#f7f5ff] lg:group-hover:bg-[#efebff] group-hover:text-[#6d4aff] lg:group-hover:text-[#6d4aff] group-focus-visible:bg-[#efebff] group-focus-visible:text-[#6d4aff] p-1 ml-6 self-start"
+                  aria-hidden="true">
+                  <!-- SVG OPEN -->
+                  <svg x-show="!isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd">
+                    </path>
+                  </svg>
+                  <!-- SVG CLOSE -->
+                  <svg x-show="isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true" data-testid="dynamic-hero-icon" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd">
+                    </path>
+                  </svg>
+                </span>
+              </button>
+              <!-- COMPANY MENU -->
+              <div class="py-6 px-6 text-base flex-col space-y-6 items-start flex" x-show="isDropdownOpen">
+                <ul class="list-disc">
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      About us
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Team
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Impact
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Careers<span
+                        class="px-4 py-1 ml-1 rounded-full bg-purple-100 text-[#5c3be7] uppercase text-xs font-bold">We're
+                        hiring</span>
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Shop
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- CONNECT DROPDOWN -->
+            <div
+              class="border-[#e2dbff] border-0 mt-2 rounded-2xl hover:border-[#6d4aff] focus:ring-[#c5b7ff] w-full mb-10"
+              x-data="{isDropdownOpen: false}">
+              <!-- TITLE BUTTON -->
+              <button type="button"
+                class="group rounded-xl flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring focus-visible:ring-[#6d4aff] focus-visible:ring-opacity-75"
+                @click="isDropdownOpen = !isDropdownOpen">
+                <span class="text-lg font-bold">Connect</span>
+                <span
+                  class="bg-[#efebff] text-[#6d4aff] rounded-full group-focus:text-[#6d4aff] group-focus:bg-[#efebff] group-hover:bg-[#f7f5ff] lg:group-hover:bg-[#efebff] group-hover:text-[#6d4aff] lg:group-hover:text-[#6d4aff] group-focus-visible:bg-[#efebff] group-focus-visible:text-[#6d4aff] p-1 ml-6 self-start"
+                  aria-hidden="true">
+                  <!-- SVG OPEN -->
+                  <svg x-show="!isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd">
+                    </path>
+                  </svg>
+                  <!-- SVG CLOSE -->
+                  <svg x-show="isDropdownOpen" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true" data-testid="dynamic-hero-icon" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd">
+                    </path>
+                  </svg>
+                </span>
+              </button>
+              <!-- CONNECT MENU -->
+              <div class="py-6 px-6 text-base flex-col space-y-6 items-start flex" x-show="isDropdownOpen">
+                <ul class="list-disc">
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Blog
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Help and support
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Partners and affiliates
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Press and media
+                    </a>
+                  </li>
+                  <li class="my-4">
+                    <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                      Contact us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- PRODUCTS FOOTER MENU -->
+          <div class="hidden md:block">
+            <span class="text-[#372580] text-[1.125rem] leading-[1.55] font-bold mb-8">Products</span>
+            <ul>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Proton Mail</a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Proton
+                  Calendar
+                </a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Proton
+                  Drive
+                </a>
+              </li>
+              <li class="my-4">
+                <a target="_blank" href="#" class="text-[#372580] hover:text-[#6d4aff] transition-all">Proton VPN</a>
+              </li>
+              <li class="my-4"><a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Proton for
+                  Business
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- PRIVACY AND COMMUNITY FOOTER MENU -->
+          <div class="hidden md:block">
+            <span class="text-[#372580] text-[1.125rem] leading-[1.55] font-bold mb-8">Privacy and community</span>
+            <ul>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Privacy and security</a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Switch to Proton
+                </a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Community
+                </a>
+              </li>
+              <li class="my-4">
+                <a target="_blank" href="#" class="text-[#372580] hover:text-[#6d4aff] transition-all">Open source
+                </a>
+              </li>
+              <li class="my-4"><a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Pricing
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- COMPANY FOOTER MENU -->
+          <div class="hidden md:block">
+            <span class="text-[#372580] text-[1.125rem] leading-[1.55] font-bold mb-8">Company</span>
+            <ul>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">About us</a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Team
+                </a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Impact
+                </a>
+              </li>
+              <li class="my-4">
+                <a target="_blank" href="#" class="text-[#372580] hover:text-[#6d4aff] transition-all">Careers
+                  <span
+                    class="px-4 py-1 ml-1 rounded-full bg-purple-100 text-[#5c3be7] uppercase text-xs font-bold">We're
+                    hiring</span>
+                </a>
+              </li>
+              <li class="my-4"><a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Shop
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- CONNECT FOOTER MENU -->
+          <div class="hidden md:block">
+            <span class="text-[#372580] text-[1.125rem] leading-[1.55] font-bold mb-8">Connect</span>
+            <ul>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Blog</a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Help and support
+                </a>
+              </li>
+              <li class="my-4">
+                <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Partners and affiliates
+                </a>
+              </li>
+              <li class="my-4">
+                <a target="_blank" href="#" class="text-[#372580] hover:text-[#6d4aff] transition-all">Press and media
+                </a>
+              </li>
+              <li class="my-4"><a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">
+                  Contact us
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- FOOTER DIVIDER -->
+        <hr class="border-[#e2dbff] my-12 md:my-16 lg:my-12">
+        <!-- FOOTER PRIMARY 2 -->
+        <div class="grid sm:grid-cols-1 md:grid-cols-5 gap-4 mb-12 lg:mb-0">
+          <!-- PROTON AG -->
+          <div class="flex flex-col flex-nowrap w-max mb-10 lg:mb-0 text-xs">
+            <span itemprop="name" class="font-bold mb-3">Proton AG</span>
+            <div class="flex flex-col flex-nowrap w-max text-body"><span>Route de la Galaise 32</span>
+              <span>1228 Plan-les-Ouates</span>
+              <span>Geneva, Switzerland</span>
+            </div>
+          </div>
+          <!-- BUILT WITH SUPPORT -->
+          <div class="md:col-span-3 w-full flex">
+            <div class="flex flex-col">
+              <span class="font-bold mb-3 text-xs">Built with support from</span>
+              <div class="flex flex-row gap-4">
+                <div class="flex flex-nowrap grow">
+                  <div class="mr-4 md:mr-2"><img src="images/swiss-logo.svg" alt="Swiss Confederation"></div>
+                  <div class="text-xs text-gray-700">
+                    <div lang="de">Schweizerische Eidgenossenschaft</div>
+                    <div lang="fr">Confédération Suisse</div>
+                    <div lang="it">Confederazione Svizzera</div>
+                    <div lang="rm">Confederaziun Svizra</div>
+                    <div lang="en" class="mt-1">Swiss Confederation</div>
+                    <div class="font-bold mt-1">Innosuisse - Swiss Innovation Agency</div>
+                  </div>
+                </div>
+                <div class="flex flex-column flex-nowrap grow">
+                  <div class="mr-4 md:mr-2">
+                    <img class="md:h-16" src="images/european-flag.svg" alt="European flag">
+                  </div>
+                  <div class="text-xs text-gray-700">This project is supported<br>by the European Union's<br>Horizon
+                    2020
+                    program<br>(Grant No 848554)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- LANGUAGE DROPDOWN -->
+          <div class="flex flex-column flex-nowrap w-max md:justify-self-end self-start">
+            <div class="flex relative" x-data="{
+                  isLangDropdownOpen: false,
+                  selectedLang: 'English',
+                  languages: [
+                    'English',
+                    'Deutsch',
+                    'Español (España)', 
+                    'Français', 
+                    'Latinoamérica',
+                    'Русский',
+                    'Italiano',
+                    'Polski',
+                    'Português (Brasil)',
+                    'Nederlands'
+                  ]
+                }">
+              <button type="button" @click="isLangDropdownOpen = !isLangDropdownOpen"
+                class="flex flex-nowrap content-center items-center relative focus:outline-none focus-visible:ring focus-visible:ring-[#c5b7ff] mt-4 md:mt-0 btn rounded-full font-bold text-[1rem] py-1.5 px-5 leading-[1.5] border-2 hover:border-[#4a2dc5] hover:text-[#4a2dc5] hover:bg-[#efebff] transition-all"
+                :class="isLangDropdownOpen ? 'text-white bg-[#4a2dc5] border-transparent' : 'border-[#6d4aff] text-[#6d4aff]'">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" class="w-5 h-5 mr-3">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <span class="block truncate" x-text="selectedLang"></span>
+                <span class="pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                    class="w-6 h-6 ml-4 transition-all" :class="{'rotate-180' : isLangDropdownOpen}">
+                    <path fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg></span>
+              </button>
+              <ul x-show="isLangDropdownOpen" @click.away="isLangDropdownOpen = false"
+                class="-top-4 md:-left-24 left-0 transform -translate-y-full absolute z-10 w-full p-3 overflow-auto text-base bg-white rounded-lg shadow-md max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm border border-gray-100 space-y-1 min-w-[16rem]">
+                <template x-for="lang in languages">
+                  <li
+                    class="cursor-pointer select-none relative py-3 px-4 flex items-center hover:bg-[#efebff] rounded-lg text-base focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-[#c5b7ff] "
+                    :class="lang === selectedLang ? 'text-[#6d4aff] bg-[#f3f4f6]' : 'text-[#111827]'" @click="
+                      selectedLang = lang;
+                      isLangDropdownOpen = false
+                    ">
+                    <span class="block truncate font-bold" x-text="lang"></span>
+                    <span class="absolute right-2 pl-3">
+                      <svg x-show="lang === selectedLang" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" class="w-5 h-5 text-[#6d4aff]">
+                        <path fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER SECONDARY 1 -->
+        <div>
+          <ul class="flex flex-col md:flex-row gap-y-4 gap-x-10 flex-wrap my-8 md:my-12">
+            <li>
+              <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">System status</a>
+            </li>
+            <li>
+              <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Report abuse</a>
+            </li>
+            <li>
+              <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Report a problem</a>
+            </li>
+            <li>
+              <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Report a security issue</a>
+            </li>
+            <li>
+              <a class="text-[#372580] hover:text-[#6d4aff] transition-all" href="#">Request a feature</a>
+            </li>
+          </ul>
+        </div>
+        <!-- FOOTER SECONDARY 2 -->
+        <div class="my-5 my-12-md text-xs">
+          <ul class="flex flex-col flex-wrap gap-y-4 md:flex-row md:divide-x md:divide-purple-200">
+            <li class="md:pr-2"><a href="#">Privacy Policy</a></li>
+            <li class="md:px-2"><a href="#">Terms &amp; conditions</a></li>
+            <li class="md:px-2"><a href="#">Transparency Report</a></li>
+            <li class="md:pl-2">©2022 Proton AG. All rights reserved.</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- FOOTER END -->
+  </main>
+</body>
+
+</html>

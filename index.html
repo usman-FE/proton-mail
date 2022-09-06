@@ -1333,6 +1333,154 @@
       </div>
     </section>
     <!-- BENEFITS 2 SECTION END -->
+    <!-- ADVANCED INBOX SECTION START -->
+    <section class="bg-white">
+      <div class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a] ">
+        <!-- SECTION HEADING -->
+        <div class="py-4 lg:py-10 flex flex-col text-center items-center">
+          <!-- HEADING -->
+          <h2
+            class="mb-2 lg:mb-6 max-w-[33.75rem] text-3xl sm:text-4xl md:text-[2.7rem] !leading-tight lg:max-w-[45.625rem] text-[#372580] mx-auto place-self-center text-center">
+            Get an advanced inbox with Proton Mail
+          </h2>
+          <!-- DIVIDER -->
+          <hr class="w-12 h-1.5 rounded-full border-none mb-6 mx-auto place-self-center text-center bg-[#6d4aff]">
+        </div>
+        <!-- SECTION CONTENT -->
+        <div class="flex flex-col pt-12 pb-32 relative" x-data="{
+            dropdowns: [
+                {
+                  title: 'Effortless organization',
+                  heading: 'Newsletter auto-unsubscribe',
+                  subtitle: 'Keep your inbox clutter-free with one click.',
+                  bulletPoints: [
+                    'Fast read/unread filtering',
+                    'Search encrypted content',
+                    'Email archiving',
+                    'Email starring',
+                    'Read receipts',
+                    'Export emails to EML',
+                    'Advanced search',
+                    'Rapid filter creation',
+                    'Advanced inbox sorting'
+                  ],
+                  isOpen: false,
+                },
+                {
+                  title: 'Customizable inbox',
+                  heading: 'Short @pm.me addresses',
+                  subtitle: 'Get a short and easy-to-share @pm.me email address.',
+                  bulletPoints: [
+                    'Dynamic aliases',
+                    'Dark mode',
+                    'Customizable inbox theme and colors',
+                    'Multi-user support and sub-accounts',
+                    'Customizable inbox layout',
+                    'Email & mobile signatures',
+                    'Threading and non-threaded modes',
+                    'Multiple addresses',
+                    'Support for 20+ languages',
+                    'Right-to-left composer support',
+                    'Plain and rich text email composers',
+                    'Custom time zones and formats'
+                  ],
+                  isOpen: false,
+                },
+                {
+                  title: 'Powerful features and integrations',
+                  heading: 'Integrated calendar',
+                  subtitle: 'Proton Calendar automatically keeps track of your events.',
+                  bulletPoints: [
+                    '1-click email and calendar import from Gmail',
+                    'Password-protected Emails',
+                    'Enhanced tracking protection',
+                    'PhishGuard protection',
+                    'Link protection',
+                    'Send expiring emails',
+                    'Address verification',
+                    'Key pinning',
+                  ],
+                  isOpen: false,
+                },
+                {
+                  title: 'Helpful automation',
+                  heading: 'Sieve filters',
+                  subtitle: 'Take email automation to a new level.',
+                  bulletPoints: [
+                    'Adaptive spam filters',
+                    'Undo sending',
+                    'Automatic PGP interoperability',
+                    'Email typo warnings',
+                    'Missing attachment detection',
+                    'Email block and allow lists',
+                    'Download all attachments',
+                    'Auto-reply',
+                    'Catch-all address',
+                    'Undo move',
+                    'Browser notifications'
+                  ],
+                  isOpen: false,
+                },
+                {
+                  title: 'Easy management of contacts',
+                  heading: 'Proton Contacts',
+                  subtitle: 'Store encrypted contact details or create contact groups in seconds.',
+                  bulletPoints: [
+                    '1-click contact import from Gmail',
+                    'Contact import via CSV',
+                    'Import contacts on mobile',
+                    'Merge contacts tool',
+                  ],
+                  isOpen: false,
+                },
+            ]
+          }">
+          <div class="lg:grid-cols-3 grid grid-cols-1 gap-4 lg:gap-11 grid-flow-row auto-rows-min items-start">
+            <template x-for="dropdown in dropdowns" x-key="dropdown.title">
+              <!-- DROPDOWN -->
+              <div
+                class="bg-white border-[#e2dbff] border p-0 mt-2 rounded-2xl hover:border-[#6d4aff] focus:ring-[#c5b7ff] w-full">
+                <!-- DROPDOWN BUTTON -->
+                <button type="button" @click="dropdown.isOpen = !dropdown.isOpen"
+                  class="p-6 group rounded-xl flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring focus-visible:ring-[#6d4aff] focus-visible:ring-opacity-75">
+                  <span class="text-lg font-bold" x-text="dropdown.title"></span>
+                  <span
+                    class="bg-[#efebff] text-[#6d4aff] rounded-full group-focus:text-[#6d4aff] group-focus:bg-[#efebff] group-hover:bg-[#f7f5ff] lg:group-hover:bg-[#efebff] group-hover:text-[#6d4aff] lg:group-hover:text-[#6d4aff] group-focus-visible:bg-purple-50 group-focus-visible:text-[#6d4aff] p-1 ml-6 self-start">
+                    <!-- SVG PLUS -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6"
+                      x-show="!dropdown.isOpen">
+                      <path fill-rule="evenodd"
+                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    <!-- SVG MINUS -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6"
+                      x-show="dropdown.isOpen">
+                      <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </span>
+                </button>
+                <!-- DROPDOWN CONTENT -->
+                <div class="p-6 text-base flex-col space-y-5 items-start flex" x-show="dropdown.isOpen">
+                  <span>
+                    <strong x-text="dropdown.heading"></strong>
+                    <br>
+                    <span x-text="dropdown.subtitle"></span>
+                  </span>
+                  <ul class="list-disc space-y-5 px-6">
+                    <template x-for="item in dropdown.bulletPoints">
+                      <li x-text="item"></li>
+                    </template>
+                  </ul>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ADVANCED INBOX SECTION END -->
     <!-- FOOTER START -->
     <footer class="pt-20 pb-12 bg-[#f7f5ff]">
       <div class="container max-w-[120rem] px-8 md:px-12 lg:px-24 mx-auto text-[#494b7a]">

@@ -1120,6 +1120,15 @@ video {
   list-style-type: disc;
 }
 
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+
+.auto-rows-min {
+  grid-auto-rows: -webkit-min-content;
+  grid-auto-rows: min-content;
+}
+
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1261,6 +1270,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -1624,6 +1639,18 @@ video {
 
 .pt-12 {
   padding-top: 3rem;
+}
+
+.pb-32 {
+  padding-bottom: 8rem;
+}
+
+.pl-6 {
+  padding-left: 1.5rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
 }
 
 .text-left {
@@ -2165,6 +2192,11 @@ video {
   --tw-ring-color: rgb(197 183 255 / var(--tw-ring-opacity));
 }
 
+.focus-visible\:ring-purple-500:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(168 85 247 / var(--tw-ring-opacity));
+}
+
 .focus-visible\:ring-opacity-75:focus-visible {
   --tw-ring-opacity: 0.75;
 }
@@ -2217,6 +2249,11 @@ video {
 .group:focus-visible .group-focus-visible\:bg-\[\#efebff\] {
   --tw-bg-opacity: 1;
   background-color: rgb(239 235 255 / var(--tw-bg-opacity));
+}
+
+.group:focus-visible .group-focus-visible\:bg-purple-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
 }
 
 .group:focus-visible .group-focus-visible\:text-\[\#6d4aff\] {
@@ -2639,6 +2676,10 @@ video {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }
@@ -2653,6 +2694,10 @@ video {
 
   .lg\:justify-start {
     justify-content: flex-start;
+  }
+
+  .lg\:gap-11 {
+    gap: 2.75rem;
   }
 
   .lg\:gap-x-3 {
@@ -2805,6 +2850,11 @@ video {
   .group:hover .lg\:group-hover\:text-\[\#6d4aff\] {
     --tw-text-opacity: 1;
     color: rgb(109 74 255 / var(--tw-text-opacity));
+  }
+
+  .group:hover .lg\:group-hover\:text-purple-500 {
+    --tw-text-opacity: 1;
+    color: rgb(168 85 247 / var(--tw-text-opacity));
   }
 }
 

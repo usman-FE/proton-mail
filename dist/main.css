@@ -2476,6 +2476,14 @@ video {
     max-width: 37.5rem;
   }
 
+  .lg\:max-w-\[35rem\] {
+    max-width: 35rem;
+  }
+
+  .lg\:max-w-\[30rem\] {
+    max-width: 30rem;
+  }
+
   .lg\:grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
@@ -2616,6 +2624,11 @@ video {
 
   .lg\:text-\[3\.5rem\] {
     font-size: 3.5rem;
+  }
+
+  .lg\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .group:hover .lg\:group-hover\:bg-\[\#efebff\] {
